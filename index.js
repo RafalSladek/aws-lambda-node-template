@@ -8,20 +8,11 @@ const createResponse = (status, statusDescription, filecontent) => ({
 });
 
 exports.handler = async (event, context, callback) => {
-    try {
-        const filenamesInfo = fileHandler.getFilenamesInfo(event);
-        console.log(filenamesInfo);
-        if (filenamesInfo.isCombinedFilename) {
-            Promise.all(filenamesInfo.splitedFilenames.map(fileHandler.fetchAsset))
-                .then(x => createResponse('200', 'OK', x))
-                .catch(err => createResponse('401', 'Bad filename', ''));
-        } else {
-            // fetch one  sinlge file content and return
-            const filecontent = await fileHandler.fetchAsset(filenamesInfo.splitedFilenames[0]);
-            return createResponse('200', 'OK', filecontent);
-        }
-    } catch (err) {
-        console.error(err);
-        return createResponse('401', 'Bad filename', '');
-    }
+    const filenamesInfo = fileHandler.getFilenamesInfo(event);
+    const requests = filenamesInfo.splitedFilenames.map(fileHandler.fetchAsset);
+    return Promise.all(requests)
+        .then(list => {
+            return createResponse('200', 'OK', list.join());
+        })
+        .catch(err => createResponse('401', 'Bad request', "Error in processing: {0}. {1}".format(filenamesInfo.originalFilename, err)));
 };
