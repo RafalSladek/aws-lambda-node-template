@@ -2,6 +2,10 @@
 minimal project template for aws lamdba in node.js 
 
 
+## how to setup
+* clone repo
+* run `npm install`
+
 ## how to use this repo
 
 ```
