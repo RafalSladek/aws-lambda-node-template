@@ -14,3 +14,6 @@ npm run test # test your event handler and check output
 npm run package # just generate the zip that would be uploaded to AWS
 npm run deploy # deploy to AWS
 ```
+
+# how to test
+use `event.json` and `context.json` to provide your test data to lamnda
