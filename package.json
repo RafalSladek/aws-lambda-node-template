@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "setup": "./node_modules/.bin/node-lambda setup",
-    "test": "./node_modules/.bin/node-lambda run",
+    "test": "./node_modules/.bin/node-lambda run --eventFile combine_cloudfront_event.json",
     "package": "./node_modules/.bin/node-lambda package",
     "deploy": "./node_modules/.bin/node-lambda deploy"
   },
