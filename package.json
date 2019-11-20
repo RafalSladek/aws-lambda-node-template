@@ -1,0 +1,17 @@
+{
+  "name": "aws-lambda-node-template",
+  "version": "1.0.0",
+  "description": "minimal project template for aws lamdba in node.js",
+  "main": "index.js",
+  "scripts": {
+    "setup": "./node_modules/.bin/node-lambda setup",
+    "test": "./node_modules/.bin/node-lambda run",
+    "package": "./node_modules/.bin/node-lambda package",
+    "deploy": "./node_modules/.bin/node-lambda deploy"
+  },
+  "author": "YOU",
+  "license": "ISC",
+  "devDependencies": {
+    "node-lambda": "^0.14.0"
+  }
+}
