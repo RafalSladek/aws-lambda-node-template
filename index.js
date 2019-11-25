@@ -1,5 +1,5 @@
 "use strict";
-const lambda = require("./lambda");
+const lambda = require("./src/lambda");
 
 const supportedCashBehaviorPaths = {
   combineJs: "/combine/js/",
